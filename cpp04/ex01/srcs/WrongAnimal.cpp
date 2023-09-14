@@ -6,21 +6,22 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:34:32 by tduprez           #+#    #+#             */
-/*   Updated: 2023/08/31 14:38:31 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/11 22:54:07 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void): _type("WrongAnimal"), _sound("...")
+WrongAnimal::WrongAnimal(void)
 {
 	std::cout << "WrongAnimal constructor" << std::endl;
 	return ;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& obj): _type(obj._type), _sound(obj._type)
+WrongAnimal::WrongAnimal(const WrongAnimal& obj)
 {
-	std::cout << "WrongAnimal constructor by copy";
+	std::cout << "WrongAnimal constructor by copy" << std::endl;
+	*this = obj;
 	return ;
 }
 
@@ -33,7 +34,6 @@ WrongAnimal::~WrongAnimal(void)
 WrongAnimal&		WrongAnimal::operator=(const WrongAnimal& obj)
 {
 	this->_type = obj._type;
-	this->_sound = obj._sound;
 	return (*this);
 }
 
@@ -42,12 +42,7 @@ std::string	WrongAnimal::getType(void) const
 	return (this->_type);
 }
 
-std::string	WrongAnimal::getSound(void) const
-{
-	return (this->_sound);
-}
-
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << getSound() << std::endl;
+	std::cout << "..." << std::endl;
 }

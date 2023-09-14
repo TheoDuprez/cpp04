@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:23:34 by tduprez           #+#    #+#             */
-/*   Updated: 2023/08/31 14:27:28 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/11 21:52:55 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ class Dog: public Animal
 
 public:
 	Dog(void);
-	Dog(const Dog& obj);
 	~Dog(void);
 
-	Dog&		operator=(const Dog& obj);
 	void	makeSound(void) const;
 
 };

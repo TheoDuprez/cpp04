@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 12:32:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:24:13 by tduprez          ###   ########lyon.fr   */
+/*   Created: 2023/09/13 13:45:19 by tduprez           #+#    #+#             */
+/*   Updated: 2023/09/13 18:37:51 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/WrongCat.hpp"
+#include "../includes/Cure.hpp"
 
-WrongCat::WrongCat(void): WrongAnimal("WrongCat")
+Cure::Cure(void): AMateria("AMateria")
 {
-	std::cout << "WrongCat constructor" << std::endl;
+	this->_type = "cure";
 	return ;
 }
 
-WrongAnimal::WrongAnimal(std::string type): _type(type)
+AMateria*	Cure::clone() const
 {
-	std::cout << "Animal type constructor" << std::endl;
-	return ;
+	return (new Cure());
 }
 
-WrongCat::~WrongCat(void)
+void	Cure::use(ICharacter& target)
 {
-	std::cout << "WrongCat destructor" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 	return ;
-}
-
-void	WrongCat::makeSound(void) const
-{
-	std::cout << "WrongMiaou" << std::endl;
 }

@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 12:32:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:24:13 by tduprez          ###   ########lyon.fr   */
+/*   Created: 2023/09/13 13:45:19 by tduprez           #+#    #+#             */
+/*   Updated: 2023/09/13 21:57:59 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/WrongCat.hpp"
+#include "../includes/Ice.hpp"
 
-WrongCat::WrongCat(void): WrongAnimal("WrongCat")
+Ice::Ice(void): AMateria("AMateria")
 {
-	std::cout << "WrongCat constructor" << std::endl;
+	this->_type = "ice";
 	return ;
 }
 
-WrongAnimal::WrongAnimal(std::string type): _type(type)
+AMateria*	Ice::clone() const
 {
-	std::cout << "Animal type constructor" << std::endl;
-	return ;
+	return (new Ice());
 }
 
-WrongCat::~WrongCat(void)
+void	Ice::use(ICharacter& target)
 {
-	std::cout << "WrongCat destructor" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return ;
-}
-
-void	WrongCat::makeSound(void) const
-{
-	std::cout << "WrongMiaou" << std::endl;
 }

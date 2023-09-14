@@ -6,25 +6,15 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:08 by tduprez           #+#    #+#             */
-/*   Updated: 2023/08/31 14:29:46 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/11 21:11:01 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog(void)
+Dog::Dog(void): Animal("Dog")
 {
-	this->_type = "Dog";
-	this->_sound = "Waouf";
 	std::cout << "Dog constructor" << std::endl;
-	return ;
-}
-
-Dog::Dog(const Dog& obj)
-{
-	this->_type = obj._type;
-	this->_sound = obj._sound;
-	std::cout << "Dog constructor by copy";
 	return ;
 }
 
@@ -34,14 +24,7 @@ Dog::~Dog(void)
 	return ;
 }
 
-Dog&		Dog::operator=(const Dog& obj)
-{
-	this->_type = obj._type;
-	this->_sound = obj._sound;
-	return (*this);
-}
-
 void	Dog::makeSound(void) const
 {
-	std::cout << getSound() << std::endl;
+	std::cout << "Wooof" << std::endl;
 }

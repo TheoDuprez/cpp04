@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 12:00:08 by tduprez           #+#    #+#             */
-/*   Updated: 2023/08/31 15:06:27 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/11 21:24:36 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ class	WrongAnimal
 
 protected:
 	std::string	_type;
-	std::string	_sound;
 
 public:
 	WrongAnimal(void);
+	WrongAnimal(std::string type);
 	WrongAnimal(const WrongAnimal& obj);
 	~WrongAnimal(void);
 
-	WrongAnimal&		operator=(const WrongAnimal& obj);
+	WrongAnimal&	operator=(const WrongAnimal& obj);
 	void			makeSound(void) const;
 	std::string		getType(void) const;
 	std::string		getSound(void) const;

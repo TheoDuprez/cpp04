@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 12:21:35 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:26:45 by tduprez          ###   ########lyon.fr   */
+/*   Created: 2023/09/13 15:41:41 by tduprez           #+#    #+#             */
+/*   Updated: 2023/09/13 22:02:03 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
+#include "./IMateriaSource.hpp"
 
-class	Animal
+class MateriaSource : public IMateriaSource
 {
 
-protected:
-	std::string	_type;
+private:
+	AMateria*	_materia[4];
 
 public:
-	Animal(void);
-	Animal(std::string name);
-	Animal(const Animal& obj);
+	MateriaSource(void);
+	~MateriaSource(void);
 
-	virtual			~Animal(void);
-	virtual void	makeSound(void) const;
-	std::string		getType(void) const;
-	Animal&			operator=(const Animal& obj);
+	void learnMateria(AMateria* m);
+	AMateria* createMateria(const std::string& type);
 
 };

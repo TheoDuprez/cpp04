@@ -18,12 +18,11 @@ CYAN	= 		\033[0;96m
 WHITE	= 		\033[0;37m
 
 SRCS =			./srcs/main.cpp \
-				./srcs/Animal.cpp \
-				./srcs/Cat.cpp \
-				./srcs/Dog.cpp \
-				./srcs/WrongAnimal.cpp \
-				./srcs/WrongCat.cpp \
-				./srcs/Brain.cpp \
+				./srcs/AMateria.cpp \
+				./srcs/Character.cpp \
+				./srcs/Ice.cpp \
+				./srcs/Cure.cpp \
+				./srcs/MateriaSource.cpp \
 
 OBJS =			$(SRCS:.cpp=.o)
 
@@ -35,7 +34,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	echo "$(GREEN)Brain successfully compiled !$(WHITE)"
 
-./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Animal.hpp $(HEADERS)/Cat.hpp $(HEADERS)/Dog.hpp $(HEADERS)/WrongAnimal.hpp $(HEADERS)/WrongCat.hpp $(HEADERS)/Brain.hpp
+./srcs/%.o: ./srcs/%.cpp $(HEADERS)/AMateria.hpp $(HEADERS)/Character.hpp $(HEADERS)/Ice.hpp $(HEADERS)/Cure.hpp $(HEADERS)/ICharacter.hpp $(HEADERS)/IMateriaSource.hpp $(HEADERS)/MateriaSource.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
 clean:

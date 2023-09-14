@@ -6,13 +6,14 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:21:35 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:26:45 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/12 22:40:25 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include "./Brain.hpp"
 
 class	Animal
 {
@@ -26,8 +27,9 @@ public:
 	Animal(const Animal& obj);
 
 	virtual			~Animal(void);
-	virtual void	makeSound(void) const;
+	virtual void	makeSound(void) const = 0;
 	std::string		getType(void) const;
-	Animal&			operator=(const Animal& obj);
+	virtual Brain*	getBrain(void) const = 0;
+	virtual Animal&			operator=(const Animal& obj);
 
 };

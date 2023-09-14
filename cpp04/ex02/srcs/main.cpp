@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:20:20 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/13 12:12:45 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/12 22:44:40 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@
 int main() {
 	{
 		Animal *animals[100];
-		for (int i = 0; i < 100; i++) {
-			if (i % 2) {
-				animals[i] = new Dog();
-			} else {
-				animals[i] = new Cat();
-			}
-		}
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 100; i++)
+			(i % 2 == 0) ? animals[i] = new Dog() : animals[i] = new Cat();
+		for (int i = 0; i < 100; i++)
 			delete animals[i];
-		}
 	}
 	{
 		Animal *animals[2];
