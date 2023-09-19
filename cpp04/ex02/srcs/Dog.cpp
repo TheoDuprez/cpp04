@@ -6,16 +6,23 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:08 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/12 22:45:55 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:34:14 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog(void): Animal("Dog")
+Dog::Dog(void): AAnimal("Dog")
 {
 	std::cout << "Dog constructor" << std::endl;
 	this->_brain = new Brain();
+	return ;
+}
+
+Dog::Dog(const Dog& obj)
+{
+	std::cout << "Dog copy constructor" << std::endl;
+	*this = obj;
 	return ;
 }
 
@@ -26,6 +33,22 @@ Dog::~Dog(void)
 	return ;
 }
 
+Dog&	Dog::operator=(const Dog& obj)
+{
+	this->_type = obj.getType();
+	return *this;
+}
+
+AAnimal&		Dog::operator=(const AAnimal& obj)
+{
+	std::cout << "Assignation operator dog for animal" << std::endl;
+	this->_type = obj.getType();
+	if (this->_brain)
+		delete this->_brain;
+	this->_brain = new Brain(*(obj.getBrain()));
+	return *this;
+}
+
 void	Dog::makeSound(void) const
 {
 	std::cout << "Wooof" << std::endl;
@@ -34,12 +57,4 @@ void	Dog::makeSound(void) const
 Brain*	Dog::getBrain(void) const
 {
 	return this->_brain;
-}
-
-Animal&		Dog::operator=(const Animal& obj)
-{
-	std::cout << "Assignation operator dog for animal" << std::endl;
-	this->_type = obj.getType();
-	*(this->_brain) = *(obj.getBrain());
-	return *this;
 }

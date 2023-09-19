@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/12 22:45:34 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:34:27 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,34 @@ Cat::Cat(void): Animal("Cat")
 	return ;
 }
 
+Cat::Cat(const Cat& obj)
+{
+	std::cout << "Cat copy constructor" << std::endl;
+	*this = obj;
+	return ;
+}
+
 Cat::~Cat(void)
 {
 	std::cout << "Cat destructor" << std::endl;
 	delete this->_brain;
 	return ;
+}
+
+Cat&	Cat::operator=(const Cat& obj)
+{
+	this->_type = obj.getType();
+	return *this;
+}
+
+Animal&		Cat::operator=(const Animal& obj)
+{
+	std::cout << "Assignation operator cat for animal" << std::endl;
+	this->_type = obj.getType();
+	if (this->_brain)
+		delete this->_brain;
+	this->_brain = new Brain(*(obj.getBrain()));
+	return *this;
 }
 
 void	Cat::makeSound(void) const
@@ -34,12 +57,4 @@ void	Cat::makeSound(void) const
 Brain*	Cat::getBrain(void) const
 {
 	return this->_brain;
-}
-
-Animal&		Cat::operator=(const Animal& obj)
-{
-	std::cout << "Assignation operator dog for animal" << std::endl;
-	this->_type = obj.getType();
-	*(this->_brain) = *(obj.getBrain());
-	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:23:21 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/12 22:08:51 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:26:49 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ private:
 
 public:
 	Cat(void);
-	~Cat(void);
+	Cat(const Cat& obj);
+	virtual ~Cat(void);
 
+	Cat&	operator=(const Cat& obj);
+	Animal&	operator=(const Animal& obj);
 	void	makeSound(void) const;
 	Brain*	getBrain(void) const;
-	Animal&		operator=(const Animal& obj);
-	Cat&		operator=(const Cat& obj);
+
 };

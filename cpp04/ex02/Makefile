@@ -1,6 +1,6 @@
 # VARIABLE DECLARATION ############################################################################
 
-NAME =			Brain
+NAME =			AbstractBrain
 
 CC =			c++
 
@@ -18,7 +18,7 @@ CYAN	= 		\033[0;96m
 WHITE	= 		\033[0;37m
 
 SRCS =			./srcs/main.cpp \
-				./srcs/Animal.cpp \
+				./srcs/AAnimal.cpp \
 				./srcs/Cat.cpp \
 				./srcs/Dog.cpp \
 				./srcs/WrongAnimal.cpp \
@@ -31,11 +31,11 @@ OBJS =			$(SRCS:.cpp=.o)
 
 all: $(NAME)
 $(NAME): $(OBJS)
-	echo "$(CYAN)Compiling Brain :$(WHITE)"
+	echo "$(CYAN)Compiling AbstractBrain :$(WHITE)"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	echo "$(GREEN)Brain successfully compiled !$(WHITE)"
 
-./srcs/%.o: ./srcs/%.cpp $(HEADERS)/Animal.hpp $(HEADERS)/Cat.hpp $(HEADERS)/Dog.hpp $(HEADERS)/WrongAnimal.hpp $(HEADERS)/WrongCat.hpp $(HEADERS)/Brain.hpp
+./srcs/%.o: ./srcs/%.cpp $(HEADERS)/AAnimal.hpp $(HEADERS)/Cat.hpp $(HEADERS)/Dog.hpp $(HEADERS)/WrongAnimal.hpp $(HEADERS)/WrongCat.hpp $(HEADERS)/Brain.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
 clean:

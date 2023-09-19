@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 12:10:00 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:27:27 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/18 14:50:33 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ class WrongCat: public WrongAnimal
 
 public:
 	WrongCat(void);
+	WrongCat(const WrongCat& obj);
 	~WrongCat(void);
 
-	void	makeSound(void) const;
+	WrongCat&	operator=(const WrongCat& obj);
+	void		makeSound(void) const;
 
 };

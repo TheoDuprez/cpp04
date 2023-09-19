@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:34:32 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 22:54:07 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:29:21 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,19 @@ WrongAnimal::~WrongAnimal(void)
 	return ;
 }
 
-WrongAnimal&		WrongAnimal::operator=(const WrongAnimal& obj)
+WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& obj)
 {
 	this->_type = obj._type;
 	return (*this);
 }
 
-std::string	WrongAnimal::getType(void) const
-{
-	return (this->_type);
-}
-
 void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "..." << std::endl;
+	return ;
+}
+
+std::string	WrongAnimal::getType(void) const
+{
+	return (this->_type);
 }

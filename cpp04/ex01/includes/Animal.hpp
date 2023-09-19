@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:21:35 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/12 14:21:27 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:31:02 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ public:
 	Animal(void);
 	Animal(std::string name);
 	Animal(const Animal& obj);
-
 	virtual			~Animal(void);
+
+	virtual Animal&	operator=(const Animal& obj);
 	virtual void	makeSound(void) const;
 	std::string		getType(void) const;
-	virtual Brain*	getBrain(void) const = 0;
-	virtual Animal&			operator=(const Animal& obj);
+	virtual Brain*	getBrain(void) const;
 
 };

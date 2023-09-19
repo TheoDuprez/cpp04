@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 12:00:08 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:24:36 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:28:39 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ public:
 	WrongAnimal&	operator=(const WrongAnimal& obj);
 	void			makeSound(void) const;
 	std::string		getType(void) const;
-	std::string		getSound(void) const;
 	
 };

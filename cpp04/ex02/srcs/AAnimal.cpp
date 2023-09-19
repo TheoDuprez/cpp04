@@ -1,54 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:34:32 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/12 14:08:50 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:31:51 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/AAnimal.hpp"
 
-Animal::Animal(void)
+AAnimal::AAnimal(void)
 {
-	std::cout << "Animal constructor" << std::endl;
+	std::cout << "AAnimal constructor" << std::endl;
 	return ;
 }
 
-Animal::Animal(std::string type): _type(type)
+AAnimal::AAnimal(std::string type): _type(type)
 {
-	std::cout << "Animal type constructor" << std::endl;
+	std::cout << "AAnimal type constructor" << std::endl;
 	return ;
 }
 
-Animal::Animal(const Animal& obj)
+AAnimal::AAnimal(const AAnimal& obj)
 {
-	std::cout << "Animal constructor by copy";
+	std::cout << "AAnimal constructor by copy";
 	*this = obj;
 	return ;
 }
 
-Animal&		Animal::operator=(const Animal& obj)
+AAnimal::~AAnimal(void)
+{
+	std::cout << "AAnimal destructor" << std::endl;
+	return ;
+}
+
+AAnimal&	AAnimal::operator=(const AAnimal& obj)
 {
 	this->_type = obj._type;
 	return (*this);
 }
 
-Animal::~Animal(void)
-{
-	std::cout << "Animal destructor" << std::endl;
-	return ;
-}
-
-std::string	Animal::getType(void) const
+std::string	AAnimal::getType(void) const
 {
 	return (this->_type);
-}
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "..." << std::endl;
 }

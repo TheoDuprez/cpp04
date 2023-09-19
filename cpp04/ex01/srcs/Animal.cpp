@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:34:32 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/12 14:08:50 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:31:38 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,29 @@ Animal::Animal(const Animal& obj)
 	return ;
 }
 
-Animal&		Animal::operator=(const Animal& obj)
-{
-	this->_type = obj._type;
-	return (*this);
-}
-
 Animal::~Animal(void)
 {
 	std::cout << "Animal destructor" << std::endl;
 	return ;
 }
 
-std::string	Animal::getType(void) const
+Animal&		Animal::operator=(const Animal& obj)
 {
-	return (this->_type);
+	this->_type = obj._type;
+	return (*this);
 }
 
 void	Animal::makeSound(void) const
 {
 	std::cout << "..." << std::endl;
+}
+
+Brain*	Animal::getBrain(void) const
+{
+	return NULL;
+}
+
+std::string	Animal::getType(void) const
+{
+	return (this->_type);
 }

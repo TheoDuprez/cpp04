@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/11 21:24:13 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 11:36:22 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ WrongCat::WrongCat(void): WrongAnimal("WrongCat")
 	return ;
 }
 
-WrongAnimal::WrongAnimal(std::string type): _type(type)
+WrongCat::WrongCat(const WrongCat& obj)
 {
-	std::cout << "Animal type constructor" << std::endl;
+	std::cout << "WrongCat constructor by copy" << std::endl;
+	*this = obj;
 	return ;
 }
 
@@ -28,6 +29,12 @@ WrongCat::~WrongCat(void)
 {
 	std::cout << "WrongCat destructor" << std::endl;
 	return ;
+}
+
+WrongCat&	WrongCat::operator=(const WrongCat& obj)
+{
+	this->_type = obj.getType();
+	return (*this);
 }
 
 void	WrongCat::makeSound(void) const
