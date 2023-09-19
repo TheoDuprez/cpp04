@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:41:41 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/13 22:02:03 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 12:47:16 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	MateriaSource(void);
 	~MateriaSource(void);
 
-	void learnMateria(AMateria* m);
-	AMateria* createMateria(const std::string& type);
+	void		learnMateria(AMateria* m);
+	AMateria*	createMateria(const std::string& type);
 
 };

@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:45:07 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/14 16:42:15 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 13:44:49 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void MateriaSource::learnMateria(AMateria* m)
 			return ;
 		}
 	}
+	delete m;
 	std::cout << "The inventory of materia is full ! You can't learn more materia !" << std::endl;
 	return ;
 }

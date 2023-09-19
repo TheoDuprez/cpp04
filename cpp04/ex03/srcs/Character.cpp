@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:17:12 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/14 17:16:05 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/19 13:45:14 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,24 @@ std::string const & Character::getName() const
 	return this->_name;
 }
 
+AMateria*	Character::getMateria(int idx) const
+{
+	return this->_materia[idx];
+}
+
 void	Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		if (!this->_materia[i])
 		{
+			
 			std::cout << "Materia " << m->getType() << " is assigned to " << this->_name << " at index " << i << " !" << std::endl;
 			this->_materia[i] = m;
 			return ;
 		}
 	}
 	std::cout << "Inventory of materias can't be filled, because is full ! Use the unequip function to replace it." << std::endl;
-	// Delete pas sur, a check avec valgrind
-	// delete m;
 	return ;
 }
 
