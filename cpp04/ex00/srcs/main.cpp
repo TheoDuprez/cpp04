@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:20:20 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/18 10:19:48 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/20 13:26:56 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,17 @@ int main()
 	delete i;
 
 	std::cout << "--------------wrongAnimal----------------" << std::endl;
-	const WrongAnimal* wrongAnimalHeap = new WrongAnimal();
-	const WrongAnimal* wrongCatHeap = new WrongCat();
-	const WrongAnimal wrongCat = WrongCat();
+	const WrongAnimal* wrongAnimal = new WrongAnimal();
+	const WrongAnimal* wrongCat = new WrongCat();
 	std::cout << "--------------Type wrongAnimal----------------" << std::endl;
-	std::cout << wrongAnimalHeap->getType() << " " << std::endl;
-	std::cout << wrongCatHeap->getType() << " " << std::endl;
-	std::cout << wrongCat.getType() << " " << std::endl;
+	std::cout << wrongAnimal->getType() << " " << std::endl;
+	std::cout << wrongCat->getType() << " " << std::endl;
 	std::cout << "--------------Sounds wrongAnimal----------------" << std::endl;
-	wrongAnimalHeap->makeSound();
-	wrongCatHeap->makeSound();
-	wrongCat.makeSound();
+	wrongAnimal->makeSound();
+	wrongCat->makeSound();
 	std::cout << "--------------Delete wrongAnimal--------------" << std::endl;
-	delete wrongAnimalHeap;
-	delete wrongCatHeap;
+	delete wrongAnimal;
+	delete wrongCat;
 
 
 	return 0;

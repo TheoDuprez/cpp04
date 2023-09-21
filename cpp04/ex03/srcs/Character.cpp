@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:17:12 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 13:45:14 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/21 14:24:34 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ Character::Character(std::string name): _name(name)
 	return ;
 }
 
-Character::Character(const Character& character)
+Character::Character(const Character& character): _name(character._name)
 {
 	for (int i = 0; i < 4; i++)
-		*(this->_materia[i]) = *(character._materia[i]);
+		this->_materia[i] = character._materia[i]->clone();
 	return ;
 }
 
 Character::~Character(void)
 {
+	for (int i = 0; i < this->_trashSize; i++)
+		if (this->_trash[i] != NULL)
+			delete this->_trash[i];
 	for (int i = 0; i < 4; i++)
 		if (this->_materia[i] != NULL)
 			delete this->_materia[i];
@@ -44,18 +47,18 @@ Character::~Character(void)
 
 Character&	Character::operator=(const Character& character)
 {
-	*(this->_materia) = *(character._materia);
+	this->_name = character._name;
+	for (int i = 0; i < 4; i++)
+		if (this->_materia[i] != NULL)
+			delete this->_materia[i];
+	for (int i = 0; i < 4; i++)
+		this->_materia[i] = character._materia[i]->clone();
 	return *this;
 }
 
 std::string const & Character::getName() const
 {
 	return this->_name;
-}
-
-AMateria*	Character::getMateria(int idx) const
-{
-	return this->_materia[idx];
 }
 
 void	Character::equip(AMateria* m)
@@ -86,6 +89,7 @@ void	Character::unequip(int idx)
 		if (i == idx && this->_materia[i] != NULL)
 		{
 			std::cout << "Materia " << this->_materia[i]->getType() << " at index " << i << " have been cleared !" << std::endl;
+			putOldMateriaToTrash(this->_materia[i]);
 			this->_materia[i] = NULL;
 			return ;
 		}
@@ -110,6 +114,24 @@ void	Character::use(int idx, ICharacter& target)
 		}
 	}
 	std::cout << "This materia is empty, you can't use it !" << std::endl;
+	return ;
+}
+
+void	Character::putOldMateriaToTrash(AMateria* toTrash)
+{
+	AMateria**		newTrash;
+	int	i = 0;
+
+	this->_trashSize++;
+	newTrash = new AMateria*[this->_trashSize];
+	for (; i < this->_trashSize - 1; i++)
+	{
+		newTrash[i] = this->_trash[i]->clone();
+		delete this->_materia[i];
+	}
+	newTrash[i] = toTrash;
+	delete [] this->_trash;
+	this->_trash = newTrash;
 	return ;
 }
 
