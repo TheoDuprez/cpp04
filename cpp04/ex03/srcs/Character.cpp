@@ -1,20 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 15:17:12 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/21 14:24:34 by tduprez          ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <iostream>
 #include "../includes/Character.hpp"
 
 Character::Character(void)
 {
+	this->_trashSize = 0;
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
 	return ;
@@ -22,15 +11,15 @@ Character::Character(void)
 
 Character::Character(std::string name): _name(name)
 {
+	this->_trashSize = 0;
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
 	return ;
 }
 
-Character::Character(const Character& character): _name(character._name)
+Character::Character(const Character& character)
 {
-	for (int i = 0; i < 4; i++)
-		this->_materia[i] = character._materia[i]->clone();
+	*this = character;
 	return ;
 }
 
@@ -48,9 +37,7 @@ Character::~Character(void)
 Character&	Character::operator=(const Character& character)
 {
 	this->_name = character._name;
-	for (int i = 0; i < 4; i++)
-		if (this->_materia[i] != NULL)
-			delete this->_materia[i];
+	this->_trashSize = character._trashSize;
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = character._materia[i]->clone();
 	return *this;
@@ -102,7 +89,7 @@ void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx > 4)
 	{
-		std::cout << "This index does'nt exist !" << std::endl;
+		std::cout << "This index doesn't exist !" << std::endl;
 		return ;
 	}
 	for (int i = 0; i < 4; i++)
@@ -119,19 +106,15 @@ void	Character::use(int idx, ICharacter& target)
 
 void	Character::putOldMateriaToTrash(AMateria* toTrash)
 {
-	AMateria**		newTrash;
-	int	i = 0;
+	AMateria**	newTrash;
+	int			i = 0;
 
 	this->_trashSize++;
 	newTrash = new AMateria*[this->_trashSize];
 	for (; i < this->_trashSize - 1; i++)
-	{
-		newTrash[i] = this->_trash[i]->clone();
-		delete this->_materia[i];
-	}
+		newTrash[i] = this->_trash[i];
 	newTrash[i] = toTrash;
 	delete [] this->_trash;
 	this->_trash = newTrash;
 	return ;
 }
-
