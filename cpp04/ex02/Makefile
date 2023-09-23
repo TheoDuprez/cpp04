@@ -33,7 +33,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	echo "$(CYAN)Compiling AbstractBrain :$(WHITE)"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	echo "$(GREEN)Brain successfully compiled !$(WHITE)"
+	echo "$(GREEN)AbstractBrain successfully compiled !$(WHITE)"
 
 ./srcs/%.o: ./srcs/%.cpp $(HEADERS)/AAnimal.hpp $(HEADERS)/Cat.hpp $(HEADERS)/Dog.hpp $(HEADERS)/WrongAnimal.hpp $(HEADERS)/WrongCat.hpp $(HEADERS)/Brain.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@

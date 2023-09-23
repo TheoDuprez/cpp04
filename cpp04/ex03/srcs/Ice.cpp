@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:45:19 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/13 21:57:59 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/23 16:35:14 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@ Ice::Ice(void): AMateria("AMateria")
 	return ;
 }
 
+Ice::Ice(const Ice& obj): AMateria(obj)
+{
+	*this = obj;
+	return ;
+}
+
+Ice::~Ice(void)
+{
+	return ;
+}
+
+Ice&	Ice::operator=(const Ice& obj)
+{
+	(void)obj;
+	return *this;
+}
 AMateria*	Ice::clone() const
 {
 	return (new Ice());

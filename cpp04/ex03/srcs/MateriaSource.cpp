@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:45:07 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 13:44:49 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/23 16:39:59 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ MateriaSource::MateriaSource(void)
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
 	return ;
+}
+
+MateriaSource::MateriaSource(const MateriaSource& obj)
+{
+	*this = obj;
+	return ;
+}
+
+MateriaSource&	MateriaSource::operator=(const MateriaSource& obj)
+{
+	if (this != &obj)
+		for (int i = 0; i < 4; i++)
+			this->_materia[i] = obj._materia[i]->clone();
+	return *this;
 }
 
 MateriaSource::~MateriaSource(void)

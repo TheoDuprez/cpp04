@@ -1,6 +1,6 @@
 # VARIABLE DECLARATION ############################################################################
 
-NAME =			Brain
+NAME =			Character
 
 CC =			c++
 
@@ -30,9 +30,9 @@ OBJS =			$(SRCS:.cpp=.o)
 
 all: $(NAME)
 $(NAME): $(OBJS)
-	echo "$(CYAN)Compiling Brain :$(WHITE)"
+	echo "$(CYAN)Compiling Character :$(WHITE)"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	echo "$(GREEN)Brain successfully compiled !$(WHITE)"
+	echo "$(GREEN)Character successfully compiled !$(WHITE)"
 
 ./srcs/%.o: ./srcs/%.cpp $(HEADERS)/AMateria.hpp $(HEADERS)/Character.hpp $(HEADERS)/Ice.hpp $(HEADERS)/Cure.hpp $(HEADERS)/ICharacter.hpp $(HEADERS)/IMateriaSource.hpp $(HEADERS)/MateriaSource.hpp
 	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
