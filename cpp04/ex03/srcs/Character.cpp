@@ -3,6 +3,7 @@
 
 Character::Character(void)
 {
+	this->_trash = NULL;
 	this->_trashSize = 0;
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
@@ -11,6 +12,7 @@ Character::Character(void)
 
 Character::Character(std::string name): _name(name)
 {
+	this->_trash = NULL;
 	this->_trashSize = 0;
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
@@ -28,6 +30,7 @@ Character::~Character(void)
 	for (int i = 0; i < this->_trashSize; i++)
 		if (this->_trash[i] != NULL)
 			delete this->_trash[i];
+	delete [] this->_trash;
 	for (int i = 0; i < 4; i++)
 		if (this->_materia[i] != NULL)
 			delete this->_materia[i];
@@ -36,10 +39,19 @@ Character::~Character(void)
 
 Character&	Character::operator=(const Character& character)
 {
-	this->_name = character._name;
-	this->_trashSize = character._trashSize;
-	for (int i = 0; i < 4; i++)
-		this->_materia[i] = character._materia[i]->clone();
+	if (this != &character)
+	{
+		this->_name = character._name;
+		this->_trashSize = character._trashSize;
+		if (character._trash == NULL)
+			this->_trash = NULL;
+		else
+			this->_trash = new AMateria*[this->_trashSize];
+		for (int i = 0; i < this->_trashSize; i++)
+			this->_trash[i] = character._trash[i]->clone();
+		for (int i = 0; i < 4; i++)
+			this->_materia[i] = character._materia[i]->clone();
+	}
 	return *this;
 }
 
