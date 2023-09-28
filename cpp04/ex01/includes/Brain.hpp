@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:56:54 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/27 11:40:38 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 11:43:51 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 class Brain
 {
 
+private:
+	std::string	_ideas[100];
+
 public:
 	Brain(void);
 	Brain(const Brain& obj);
@@ -25,8 +28,5 @@ public:
 	Brain& 		operator=(const Brain& obj);
 	void		setIdea(int idx, std::string idea);
 	std::string	getIdea(int idx) const;
-
-private:
-	std::string	_ideas[100];
 
 };

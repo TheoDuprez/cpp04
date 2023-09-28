@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:34:32 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 11:31:38 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 11:38:15 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 Animal::Animal(void)
 {
 	std::cout << "Animal constructor" << std::endl;
-	return ;
-}
-
-Animal::Animal(std::string type): _type(type)
-{
-	std::cout << "Animal type constructor" << std::endl;
 	return ;
 }
 

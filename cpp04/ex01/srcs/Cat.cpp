@@ -6,20 +6,20 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 11:34:27 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 13:05:23 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cat.hpp"
 
-Cat::Cat(void): Animal("Cat")
+Cat::Cat(void): Animal()
 {
 	std::cout << "Cat constructor" << std::endl;
 	this->_brain = new Brain();
 	return ;
 }
 
-Cat::Cat(const Cat& obj)
+Cat::Cat(const Cat& obj): Animal(obj)
 {
 	std::cout << "Cat copy constructor" << std::endl;
 	*this = obj;
@@ -35,17 +35,25 @@ Cat::~Cat(void)
 
 Cat&	Cat::operator=(const Cat& obj)
 {
-	this->_type = obj.getType();
+	std::cout << "Assignation operator cat" << std::endl;
+	if (this != &obj)
+	{
+		delete this->_brain;
+		this->_type = obj.getType();
+		this->_brain = new Brain(*(obj.getBrain()));
+	}
 	return *this;
 }
 
 Animal&		Cat::operator=(const Animal& obj)
 {
-	std::cout << "Assignation operator cat for animal" << std::endl;
-	this->_type = obj.getType();
-	if (this->_brain)
+	std::cout << "Assignation operator animal for cat" << std::endl;
+	if (this != &obj)
+	{
 		delete this->_brain;
-	this->_brain = new Brain(*(obj.getBrain()));
+		this->_type = obj.getType();
+		this->_brain = new Brain(*(obj.getBrain()));
+	}
 	return *this;
 }
 

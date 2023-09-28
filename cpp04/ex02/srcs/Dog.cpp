@@ -6,20 +6,21 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:08 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 11:34:14 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 13:16:44 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog(void): AAnimal("Dog")
+Dog::Dog(void): AAnimal()
 {
+	this->_type = "Dog";
 	std::cout << "Dog constructor" << std::endl;
 	this->_brain = new Brain();
 	return ;
 }
 
-Dog::Dog(const Dog& obj)
+Dog::Dog(const Dog& obj): AAnimal(obj)
 {
 	std::cout << "Dog copy constructor" << std::endl;
 	*this = obj;
@@ -33,19 +34,27 @@ Dog::~Dog(void)
 	return ;
 }
 
-Dog&	Dog::operator=(const Dog& obj)
+Dog&		Dog::operator=(const Dog& obj)
 {
-	this->_type = obj.getType();
+	std::cout << "Assignation operator dog" << std::endl;
+	if (this != &obj)
+	{
+		delete this->_brain;
+		this->_type = obj.getType();
+		this->_brain = new Brain(*(obj.getBrain()));
+	}
 	return *this;
 }
 
 AAnimal&		Dog::operator=(const AAnimal& obj)
 {
-	std::cout << "Assignation operator dog for animal" << std::endl;
-	this->_type = obj.getType();
-	if (this->_brain)
+	std::cout << "Assignation operator animal for dog" << std::endl;
+	if (this != &obj)
+	{
 		delete this->_brain;
-	this->_brain = new Brain(*(obj.getBrain()));
+		this->_type = obj.getType();
+		this->_brain = new Brain(*(obj.getBrain()));
+	}
 	return *this;
 }
 

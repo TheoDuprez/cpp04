@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:45:19 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/23 16:35:14 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 14:07:56 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ Ice::~Ice(void)
 
 Ice&	Ice::operator=(const Ice& obj)
 {
-	(void)obj;
+	if (this != &obj)
+		this->_type = obj._type;
 	return *this;
 }
+
 AMateria*	Ice::clone() const
 {
-	return (new Ice());
+	return (new Ice(*this));
 }
 
 void	Ice::use(ICharacter& target)

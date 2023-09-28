@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:21:35 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 11:30:57 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 11:34:24 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ protected:
 
 public:
 	Animal(void);
-	Animal(std::string name);
 	Animal(const Animal& obj);
 	virtual			~Animal(void);
 

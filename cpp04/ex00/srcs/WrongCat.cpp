@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:32:05 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/18 14:57:39 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 11:31:42 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ WrongCat::WrongCat(void): WrongAnimal()
 	return ;
 }
 
-WrongCat::WrongCat(const WrongCat& obj)
+WrongCat::WrongCat(const WrongCat& obj): WrongAnimal(obj)
 {
 	std::cout << "WrongCat constructor by copy" << std::endl;
 	*this = obj;

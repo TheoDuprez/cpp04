@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:45:19 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/23 16:34:12 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 14:07:51 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ Cure::~Cure(void)
 
 Cure&	Cure::operator=(const Cure& obj)
 {
-	(void)obj;
+	if (this != &obj)
+		this->_type = obj._type;
 	return *this;
 }
 
 AMateria*	Cure::clone() const
 {
-	return (new Cure());
+	return (new Cure(*this));
 }
 
 void	Cure::use(ICharacter& target)

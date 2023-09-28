@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:34:32 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/19 11:37:26 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 11:39:23 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 WrongAnimal::WrongAnimal(void)
 {
 	std::cout << "WrongAnimal constructor" << std::endl;
-	return ;
-}
-
-WrongAnimal::WrongAnimal(std::string type): _type(type)
-{
-	std::cout << "Animal type constructor" << std::endl;
 	return ;
 }
 

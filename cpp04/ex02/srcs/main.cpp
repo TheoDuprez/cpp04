@@ -6,7 +6,7 @@
 /*   By: tduprez <tduprez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:20:20 by tduprez           #+#    #+#             */
-/*   Updated: 2023/09/20 14:19:56 by tduprez          ###   ########lyon.fr   */
+/*   Updated: 2023/09/28 13:17:37 by tduprez          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int main() {
 		AAnimal *animals[100];
 		for (int i = 0; i < 100; i++)
 			(i % 2 == 0) ? animals[i] = new Dog() : animals[i] = new Cat();
-		for (int i = 0; i < 100; i++) {
+		std::cout << "-----Destructor-----" << std::endl;
+		for (int i = 0; i < 100; i++)
 			delete animals[i];
-		}
 	}
 	{
 		std::cout << "---------Additionnal tests-----------" << std::endl;
@@ -47,6 +47,17 @@ int main() {
 		std::cout << "-------- Destructors --------" << std::endl;
 		delete animals[0];
 		delete animals[1];
+	}
+	{
+		std::cout << "----------Deep copy test------------" << std::endl;
+		Dog	dog1;
+		Dog	dog2;
+		
+		dog1.getBrain()->setIdea(0, "test");
+		dog2 = dog1;
+
+		std::cout << "Dog 1 idea 0 : " << dog1.getBrain()->getIdea(0) << std::endl;
+		std::cout << "Dog 2 idea 0 : " << dog2.getBrain()->getIdea(0) << std::endl;
 	}
 	return 0;
 }
